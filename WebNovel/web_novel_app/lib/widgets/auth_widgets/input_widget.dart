@@ -92,6 +92,7 @@ class InputWidget extends StatelessWidget {
                 height: 30,
                 decoration: BoxDecoration(
                     color: white,
+                    boxShadow: [BoxShadow(blurRadius: 1, offset: const Offset(1, 1), color: black.withOpacity(0.6))],
                     borderRadius: BorderRadius.circular(borderRadius - 5)),
                 child: Center(
                     child: Text(inputLabel,

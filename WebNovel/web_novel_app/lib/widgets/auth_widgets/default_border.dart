@@ -16,6 +16,7 @@ class DefaultBorder extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius),
+          boxShadow: [BoxShadow(blurRadius: 0.75, offset: const Offset(1, 1), color: black.withOpacity(0.6)), BoxShadow(blurRadius: 0.75, offset: const Offset(-1, -1), color: black.withOpacity(0.6))],
           gradient: const LinearGradient(
             colors: [semiDarkPurple , darkBlue, lightBlue ],
             begin: Alignment.topRight,

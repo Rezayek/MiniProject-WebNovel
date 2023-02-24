@@ -52,7 +52,6 @@ class _SignUpViewState extends State<SignUpView> {
       listener: (context, state) async {
         final closeDialog = _closeDialogHandle;
         if (state is AuthStateRegistering) {
-
           if (!state.isLoading && closeDialog != null) {
             closeDialog();
             _closeDialogHandle = null;
