@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "680149849612",
+    "project_id": "web-novel-app",
+    "storage_bucket": "web-novel-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680149849612:android:5686abe4d0bf823dc48029",
+        "android_client_info": {
+          "package_name": "com.example.web_novel_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "680149849612-328ni9bajqsb676uovph4c35am3qkb50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABQombm13fVbYEvHIlnPnvPzgcf_QaSQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "680149849612-328ni9bajqsb676uovph4c35am3qkb50.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

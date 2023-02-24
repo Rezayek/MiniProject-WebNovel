@@ -1,0 +1,154 @@
+import 'package:flutter/material.dart';
+import 'package:web_novel_app/widgets/comments_widgets/reviews/review_input/write_review_dialog.dart';
+import 'package:web_novel_app/widgets/comments_widgets/reviews/reviews_widgets/react_button.dart';
+
+import '../../../../constants/colors.dart';
+import '../../../../constants/enums.dart';
+import 'dart:developer' as debug;
+
+class BottomReact extends StatefulWidget {
+  final double height;
+  final double width;
+  final ReactState reactState;
+  final bool hasReplies;
+  final String reviewId;
+  final String userName;
+  final Function(bool loadReplies) loadReplies;
+  const BottomReact(
+      {super.key,
+      required this.height,
+      required this.width,
+      required this.reactState,
+      required this.hasReplies,
+      required this.reviewId,
+      required this.userName,
+      required this.loadReplies});
+
+  @override
+  State<BottomReact> createState() => _BottomReact();
+}
+
+class _BottomReact extends State<BottomReact> {
+  late ReactState react;
+  late bool _openReplies;
+  @override
+  void initState() {
+    react = widget.reactState;
+    _openReplies = false;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    final width = widget.width - widget.width * 0.05;
+    return Container(
+      margin: EdgeInsets.only(right: widget.width * 0.05),
+      height: widget.height,
+      width: width,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          widget.hasReplies
+          ? GestureDetector(
+            onTap: () {
+              setState(() {
+                if (!_openReplies) {
+                  _openReplies = true;
+                  widget.loadReplies(true);
+                } else {
+                  _openReplies = false;
+                  widget.loadReplies(false);
+                }
+              });
+            },
+            child: SizedBox(
+              height: widget.height,
+              width: width * 0.2,
+              child: Center(
+                child: Text(
+                  !_openReplies ? "Replies" : "Close",
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: !_openReplies ? black : lightPurple),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+          )
+          : const SizedBox(),
+          GestureDetector(
+            onTap: () async {
+              final result = await writeReviewDialog(
+                  context: context,
+                  title: "Reply to ${widget.userName}",
+                  isReview: false);
+              if (result == null) return;
+              debug.log(result.toString());
+            },
+            child: SizedBox(
+              height: widget.height,
+              width: width * 0.2,
+              child: const Center(
+                child:Text(
+                  "Reply",
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: black),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+          ),
+          GestureDetector(
+              onTap: () {
+                setState(() {
+                  switch (react) {
+                    case ReactState.none:
+                      react = ReactState.like;
+                      break;
+                    case ReactState.like:
+                      react = ReactState.none;
+                      break;
+                    case ReactState.dislike:
+                      react = ReactState.like;
+                      break;
+                  }
+                });
+              },
+              child: ReactButton(
+                  height: widget.height,
+                  width: width * 0.15,
+                  size: width * 0.1,
+                  isUp: true,
+                  isActive: react == ReactState.like ? true : false)),
+          GestureDetector(
+              onTap: () {
+                setState(() {
+                  switch (react) {
+                    case ReactState.none:
+                      react = ReactState.dislike;
+                      break;
+                    case ReactState.like:
+                      react = ReactState.dislike;
+                      break;
+                    case ReactState.dislike:
+                      react = ReactState.none;
+                      break;
+                  }
+                });
+              },
+              child: ReactButton(
+                  height: widget.height,
+                  width: width * 0.15,
+                  size: width * 0.1,
+                  isUp: false,
+                  isActive: react == ReactState.dislike ? true : false)),
+        ],
+      ),
+    );
+  }
+}
