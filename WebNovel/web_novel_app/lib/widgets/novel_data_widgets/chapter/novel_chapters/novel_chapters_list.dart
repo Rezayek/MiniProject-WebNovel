@@ -57,17 +57,7 @@ class _NovelChaptersListState extends State<NovelChaptersList> {
           onTap: (isTapped) async {
             if (isTapped) {
               if (UserSingleton().currentUser.coins < 15) {
-                final snackBar = SnackBar(
-                  content: const Text('Not Enough Coins'),
-                  duration: const Duration(milliseconds: 1500),
-                  action: SnackBarAction(
-                    label: 'Okay',
-                    onPressed: () {
-                      // Some code to undo the change.
-                    },
-                  ),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                notEnoughCoinsNotifier();
               } else {
                 final result = await unlockChapterDialog(
                     context: context,
@@ -88,4 +78,18 @@ class _NovelChaptersListState extends State<NovelChaptersList> {
         novelId: novelId,
         chapterId: chapterId,
         index: index));
+
+  void notEnoughCoinsNotifier(){
+    final snackBar = SnackBar(
+      content: const Text('Not Enough Coins'),
+      duration: const Duration(milliseconds: 1500),
+      action: SnackBarAction(
+        label: 'Okay',
+        onPressed: () {
+          // Some code to undo the change.
+        },
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 }

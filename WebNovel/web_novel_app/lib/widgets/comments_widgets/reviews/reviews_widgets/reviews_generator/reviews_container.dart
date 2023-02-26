@@ -39,8 +39,7 @@ class _ReviewsContainerState extends State<ReviewsContainer> {
   bool _notifie = false;
   @override
   Widget build(BuildContext context) {
-    final width =
-        !widget.isReply ? widget.width : (widget.width - widget.width * 0.18);
+    final width = !widget.isReply ? widget.width : (widget.width - widget.width * 0.18);
     final height = !widget.isReply ? widget.height : 50.h;
     setState(() {
       if (_notifie) {
