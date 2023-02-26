@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:web_novel_app/constants/colors.dart';
 import 'package:web_novel_app/widgets/comments_widgets/reviews/reviews_widgets/user_rating.dart';
 import 'package:web_novel_app/widgets/comments_widgets/reviews/reviews_widgets/user_review_info.dart';
 
@@ -25,9 +26,16 @@ class ReviewInfoRow extends StatelessWidget {
       height: height,
       width: width,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: !isReply?MainAxisAlignment.spaceBetween : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          isReply? Container(
+            height: height * 0.05,
+            width: width * 0.1,
+            decoration: const BoxDecoration(
+              color: black,
+            ),
+          ): const SizedBox(),
           UserReviewInfo(
               height: height,
               width: width * 0.7,

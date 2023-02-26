@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../../constants/colors.dart';
 
@@ -24,14 +25,18 @@ class UserReviewContent extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
-                blurRadius: 1,
+                blurRadius: 0.75,
                 offset: const Offset(1, 1),
-                color: black.withOpacity(0.5))
+                color: black.withOpacity(0.5)),
+            BoxShadow(
+                blurRadius: 0.75,
+                offset: const Offset(-1, -1),
+                color: black.withOpacity(0.5)),
           ]),
       child: Text(
         content,
         style: const TextStyle(
-        fontSize: 16, fontWeight: FontWeight.w400, color: black),
+        fontSize: 15, fontWeight: FontWeight.w400, color: black),
       ),
     );
   }

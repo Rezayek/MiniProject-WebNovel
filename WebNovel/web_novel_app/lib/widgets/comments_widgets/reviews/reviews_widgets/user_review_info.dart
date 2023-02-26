@@ -16,7 +16,7 @@ class UserReviewInfo extends StatelessWidget {
       height: height,
       width: width,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(

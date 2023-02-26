@@ -67,7 +67,7 @@ class RequestsManager implements NovelProvider {
           List.generate(10, (index) => NovelModel.fromRequest(novel1)) +
           novels;
 
-      await Future.delayed(const Duration(seconds: 4));
+      await Future.delayed(const Duration(seconds: 3));
       if (novels.isNotEmpty) {
         return novels;
       } else {
@@ -100,7 +100,7 @@ class RequestsManager implements NovelProvider {
       List<NovelModel> novels =
           List.generate(3, (index) => NovelModel.fromRequest(novel));
       //wait to test the animation
-      await Future.delayed(const Duration(seconds: 10));
+      await Future.delayed(const Duration(seconds: 3));
 
       if (novels.isNotEmpty) {
         return novels;
@@ -152,7 +152,7 @@ class RequestsManager implements NovelProvider {
               List.generate(5, (index) => NovelModel.fromRequest(novel2));
 
       //wait to test the animation
-      await Future.delayed(const Duration(seconds: 10));
+      await Future.delayed(const Duration(seconds: 3));
 
       if (novels.isNotEmpty) {
         return novels;
@@ -187,7 +187,7 @@ class RequestsManager implements NovelProvider {
           List.generate(10, (index) => NovelModel.fromRequest(novel));
 
       //wait to test the animation
-      await Future.delayed(const Duration(seconds: 10));
+      await Future.delayed(const Duration(seconds: 3));
 
       if (novels.isNotEmpty) {
         return novels;
@@ -222,7 +222,7 @@ class RequestsManager implements NovelProvider {
           List.generate(10, (index) => NovelModel.fromRequest(novel));
 
       //wait to test the animation
-      await Future.delayed(const Duration(seconds: 10));
+      await Future.delayed(const Duration(seconds: 3));
 
       if (novels.isNotEmpty) {
         return novels;
@@ -263,7 +263,7 @@ class RequestsManager implements NovelProvider {
       };
 
       //wait to test the animation
-      await Future.delayed(const Duration(seconds: 10));
+      await Future.delayed(const Duration(seconds: 3));
 
       if (novels.isNotEmpty) {
         return data;
@@ -298,7 +298,7 @@ class RequestsManager implements NovelProvider {
           List.generate(10, (index) => NovelModel.fromRequest(novel));
 
       //wait to test the animation
-      await Future.delayed(const Duration(seconds: 10));
+      await Future.delayed(const Duration(seconds: 3));
 
       if (novels.isNotEmpty) {
         return novels;
@@ -331,7 +331,7 @@ class RequestsManager implements NovelProvider {
         List.generate(10, (index) => NovelModel.fromRequest(novel));
 
     //wait to test the animation
-    await Future.delayed(const Duration(seconds: 10));
+    await Future.delayed(const Duration(seconds: 3));
     if (novels.isNotEmpty) {
       return novels;
     } else {
