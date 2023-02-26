@@ -30,19 +30,19 @@ class ReviewsManager implements ReviewsProvider {
         "postDate": "2 months ago",
         "rating": 4,
         "content":
-            "generateChar() content content content content content content content content content content content content content content content content content content",
+            "content content content content content content content content content content content content content content content content content content",
         "likes": "2",
         "dislikes": "3",
         "replies": 2,
         "reply": [
           {
             "reviewId": "5",
-            "userName": "user ${Random().nextInt(100)}",
+            "userName": "user 5",
             "url": "",
             "postDate": "2 months ago",
             "rating": 4,
             "content":
-                "generateChar() content content content content content content content content content content content content content content content content content content",
+                "content content content content content content content content content content content content content content content content content content",
             "likes": "2",
             "dislikes": "3",
             "replies": 1,
@@ -54,7 +54,35 @@ class ReviewsManager implements ReviewsProvider {
                 "postDate": "2 months ago",
                 "rating": 4,
                 "content":
-                    "generateChar() content content content content content content content content content content content content content content content content content content",
+                    "content content content content content content content content content content content content content content content content content content",
+                "likes": "2",
+                "dislikes": "3",
+                "replies": 1,
+                "reply": [
+                  {
+                    "reviewId": "14",
+                    "userName": "user 14",
+                    "url": "",
+                    "postDate": "2 months ago",
+                    "rating": 4,
+                    "content":
+                        "content content content content content content content content content content content content content content content content content content",
+                    "likes": "2",
+                    "dislikes": "3",
+                    "replies": 0,
+                    "reply":[]
+                  }
+                ]
+              },
+
+              {
+                "reviewId": "13",
+                "userName": "user 13",
+                "url": "",
+                "postDate": "1 months ago",
+                "rating": 4,
+                "content":
+                    "content content content content content content content content content content content content content content content content content content",
                 "likes": "2",
                 "dislikes": "3",
                 "replies": 0,
@@ -69,7 +97,7 @@ class ReviewsManager implements ReviewsProvider {
             "postDate": "2 months ago",
             "rating": 4,
             "content":
-                "generateChar() content content content content content content content content content content content content content content content content content content",
+                "content content content content content content content content content content content content content content content content content content",
             "likes": "2",
             "dislikes": "3",
             "replies": 0,
@@ -83,7 +111,7 @@ class ReviewsManager implements ReviewsProvider {
         "url": "",
         "postDate": "2 months ago",
         "rating": 4,
-        "content": "generateChar()  content content content",
+        "content": "content content content",
         "likes": "2",
         "dislikes": "3",
         "replies": 0,
@@ -96,7 +124,7 @@ class ReviewsManager implements ReviewsProvider {
         "postDate": "2 months ago",
         "rating": 4,
         "content":
-            "generateChar() content content content content content  content content content content",
+            "content content content content content  content content content content",
         "likes": "2",
         "dislikes": "3",
         "replies": 1,
@@ -108,7 +136,7 @@ class ReviewsManager implements ReviewsProvider {
             "postDate": "2 months ago",
             "rating": 4,
             "content":
-                "generateChar() content content content content content content content content content content content content content content content content content content",
+                " content content content content content content content content content content content content content content content content content content",
             "likes": "2",
             "dislikes": "3",
             "replies": 1,
@@ -119,12 +147,37 @@ class ReviewsManager implements ReviewsProvider {
                 "url": "",
                 "postDate": "2 months ago",
                 "rating": 4,
-                "content":
-                    "generateChar() content content content content content content content content content content content content content content content content content content",
+                "content":"content content content content content content content content content content content content content content content content content content",
                 "likes": "2",
                 "dislikes": "3",
-                "replies": 0,
-                "reply": []
+                "replies": 1,
+                "reply": [
+                  {
+                    "reviewId": "12",
+                    "userName": "user 12",
+                    "url": "",
+                    "postDate": "5 months ago",
+                    "rating": 5,
+                    "content":" content content content content content content content content content content content content content content content content content content",
+                    "likes": "2",
+                    "dislikes": "3",
+                    "replies": 1,
+                    "reply":[
+                      {
+                        "reviewId": "13",
+                        "userName": "user 13",
+                        "url": "",
+                        "postDate": "5 months ago",
+                        "rating": 5,
+                        "content":" content content content content content content content content content content content content content content content content content content",
+                        "likes": "2",
+                        "dislikes": "3",
+                        "replies": 0,
+                        "reply":[]
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }

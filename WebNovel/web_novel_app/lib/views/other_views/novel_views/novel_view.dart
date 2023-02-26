@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
+import 'package:web_novel_app/constants/colors.dart';
 import 'package:web_novel_app/services/novel_services/models/novel_model.dart';
 
 import 'package:web_novel_app/services/novel_services/novel_bloc.dart/novel_chapters_bloc/novel_chapters_bloc.dart';
@@ -57,10 +58,11 @@ class _NovelViewState extends State<NovelView> {
         ],
         child: SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      child: SizedBox(
-        height: 350.h +
-            novel.tags.length * 2.h +
-            (novel.description.length * 100.h) * 0.0015,
+      child: Container(
+        height: 350.h + novel.tags.length * 2.h +(novel.description.length * 100.h) * 0.0015,
+        decoration: const BoxDecoration(
+          color: white
+        ),
         width: 100.w,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

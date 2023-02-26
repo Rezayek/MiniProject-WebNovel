@@ -46,7 +46,7 @@ class _BottomReact extends State<BottomReact> {
     final width = widget.width - widget.width * 0.05;
     return Container(
       margin: EdgeInsets.only(right: widget.width * 0.05),
-      height: widget.height,
+      height: widget.height ,
       width: width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,

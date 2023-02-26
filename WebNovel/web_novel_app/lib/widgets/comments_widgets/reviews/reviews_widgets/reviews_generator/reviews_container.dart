@@ -3,17 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:sizer/sizer.dart';
 import 'package:web_novel_app/constants/colors.dart';
-import 'package:web_novel_app/services/novel_services/novels_exceptions.dart';
+
 
 import '../../../../../constants/review_const.dart';
 import '../../../../../services/novel_services/models/review_model.dart';
 
-import '../../../../../services/novel_services/novel_bloc.dart/reviews_bloc/reviews_bloc.dart';
-import '../../../../../services/novel_services/novel_bloc.dart/reviews_bloc/reviews_event.dart';
-import '../../../../../services/novel_services/novel_bloc.dart/reviews_bloc/reviews_state.dart';
+
 import '../novel_review_container.dart';
 
-import 'dart:developer' as debug;
+
 
 class ReviewsContainer extends StatefulWidget {
   final double height;
@@ -34,26 +32,23 @@ class ReviewsContainer extends StatefulWidget {
 }
 
 class _ReviewsContainerState extends State<ReviewsContainer> {
-  List<dynamic> _reviews = [];
+  List<dynamic> reviews = [];
   List<dynamic> _generalReviews = [];
-  bool _notifie = false;
+  bool notifie = false;
   @override
   Widget build(BuildContext context) {
-    final width =
-        !widget.isReply ? widget.width : (widget.width - widget.width * 0.18);
-    final height = !widget.isReply ? widget.height : 50.h;
     setState(() {
-      if (_notifie) {
-        _generalReviews = _reviews;
+      if (notifie) {
+        _generalReviews = reviews;
       } else {
         _generalReviews = widget.reviews;
       }
     });
 
     return Container(
-      padding: EdgeInsets.all(height * 0.01),
-      height: height,
-      width: width,
+      padding: EdgeInsets.all(widget.height * 0.01),
+      height: widget.height,
+      width: widget.width,
       decoration: BoxDecoration(
           color: white,
           borderRadius: widget.isReply
@@ -81,13 +76,13 @@ class _ReviewsContainerState extends State<ReviewsContainer> {
             ReviewModel review =
                 _generalReviews[index][reviewField] as ReviewModel;
             return NovelReviewContainer(
-              height: 30.h,
-              width: width,
+              height: 32.h,
+              width: widget.width,
               hasReplies: review.repliesNumber == 0 ? false : true,
               isReply: widget.isReply,
               review: review,
               reply: _generalReviews[index][reviewReplyField],
-              novelId: widget.novelId,
+              novelId: widget.novelId, changeHeight: (double newHeight) {},
             );
           }),
     );
