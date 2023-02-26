@@ -11,7 +11,7 @@ class CurrencyHolder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 7.h,
-      width: 25.w,
+      width: 22.w,
       decoration: BoxDecoration(
         boxShadow: [BoxShadow(blurRadius: 1.5, offset: const Offset(1, 1), color: black.withOpacity(0.7))],
         borderRadius: BorderRadius.circular(25),
@@ -26,8 +26,8 @@ class CurrencyHolder extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(qte.toString(), style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: black),),
-          Icon(icon,color: black, size: 30,)
+          Text(qte.toString(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w500, color: black),),
+          Icon(icon,color: black, size: 25,)
         ],
       ),
     );

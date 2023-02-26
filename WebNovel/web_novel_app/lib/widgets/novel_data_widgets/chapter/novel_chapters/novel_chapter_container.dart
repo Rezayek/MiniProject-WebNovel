@@ -4,7 +4,6 @@ import 'package:web_novel_app/constants/colors.dart';
 import 'package:web_novel_app/services/novel_services/models/chapter_model.dart';
 import 'package:web_novel_app/widgets/novel_data_widgets/chapter/novel_chapters/chapter_infos.dart';
 
-
 import '../../../../services/novel_services/novel_bloc.dart/novel_chapters_bloc/novel_chapters_bloc.dart';
 
 import '../../../../services/novel_services/novel_bloc.dart/novel_chapters_bloc/novel_chapters_state.dart';
@@ -46,24 +45,30 @@ class _NovelChapterContainerState extends State<NovelChapterContainer> {
 
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      if(chaptersSingleton.isChapterLocked(widget.index)){
+        _chapterState = false;
+      }
+    });
     return BlocListener<NovelChaptersBloc, NovelChaptersState>(
       listener: (context, state) {
         if (state is NovelChaptersStateGetChapters) {
           if (state.exception is NovelExceptionCantUnLockChapter) {
           } else {
             if (state.index == -1) return;
-            if (state.index != widget.index) return;
-            if (state.isUnlocking == true) {
-              setState(() {
-                _isUnlocking = true;
-              });
-              return;
-            }
-            if (!chaptersSingleton.isChapterLocked(state.index)) {
-              setState(() {
-                _isUnlocking = false;
-                _chapterState = true;
-              });
+            if (state.index == widget.index) {
+              if (state.isUnlocking == true) {
+                setState(() {
+                  _isUnlocking = true;
+                });
+                return;
+              }
+              if (!chaptersSingleton.isChapterLocked(widget.index)) {
+                setState(() {
+                  _isUnlocking = false;
+                  _chapterState = true;
+                });
+              }
             }
           }
         }

@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
+import 'package:web_novel_app/services/novel_services/novel_bloc.dart/reviews_bloc/reviews_event.dart';
 import 'package:web_novel_app/widgets/comments_widgets/reviews/review_input/write_review_dialog.dart';
-import 'package:web_novel_app/widgets/comments_widgets/reviews/reviews_widgets/reviews_generator/reviews_container.dart';
+
 
 import 'package:web_novel_app/widgets/other_widgets/default_button.dart';
 
 import '../../../../constants/colors.dart';
+import '../../../../services/novel_services/novel_bloc.dart/reviews_bloc/reviews_bloc.dart';
+import '../../../../services/novel_services/novel_controllers/novel_controller/reviews_controller/reviews_controller.dart';
 import '../../../nav_widgets/home_widgets/label/label.dart';
-import 'dart:developer' as debug;
 
-import '../reviews_widgets/novel_review_container.dart';
 
 class ReviewHolder extends StatefulWidget {
-  const ReviewHolder({super.key});
+  final String novelId;
+  const ReviewHolder({super.key, required this.novelId});
 
   @override
   State<ReviewHolder> createState() => _ReviewHolderState();
@@ -31,19 +34,16 @@ class _ReviewHolderState extends State<ReviewHolder> {
           Label(
             title: "Reviews",
             gradiantColors: [lightBlue.withOpacity(0.5), white.withOpacity(0)],
-            margin: [
-              1.h,
-              1.h,
-              2.w
-            ],
+            margin: [1.h, 1.h, 2.w],
             expanded: 5.w,
           ),
           Center(
             child: GestureDetector(
               onTap: () async {
-                final result = await writeReviewDialog(context: context, isReview: true, title: "Write a review");
+                final result = await writeReviewDialog(
+                    context: context, isReview: true, title: "Write a review");
                 if (result == null) return;
-                debug.log(result.toString());
+                launchContext(result[0], result[1]);
               },
               child: DefaultButton(
                   height: 8.h,
@@ -53,9 +53,13 @@ class _ReviewHolderState extends State<ReviewHolder> {
                   colors: const [lightBlue, lightPurple]),
             ),
           ),
-          ReviewsContainer(height: 70.h, width: 100.w, isReply: false,),
+          ReviewsController(novelId: widget.novelId),
         ],
       ),
     );
   }
+
+  void launchContext(String content, String rating) =>
+      context.read<ReviewsBloc>().add(ReviewsEventAddReview(
+          content: content, novelId: widget.novelId, rating: rating));
 }

@@ -30,7 +30,7 @@ class ReviewInfoRow extends StatelessWidget {
         children: [
           UserReviewInfo(
               height: height,
-              width: width * 0.75,
+              width: width * 0.7,
               userName: userName,
               userImg: userImg,
               released: released),

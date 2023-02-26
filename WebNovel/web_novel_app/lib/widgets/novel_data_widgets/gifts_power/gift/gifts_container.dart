@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:web_novel_app/services/novel_services/models/gifts_model.dart';
 import 'package:web_novel_app/widgets/novel_data_widgets/gifts_power/gift/latest_gifts/latest_gifts_dialog.dart';
 import 'package:web_novel_app/widgets/novel_data_widgets/gifts_power/gift/send_gift_widget/send_gift_dialog.dart';
 import 'package:web_novel_app/widgets/novel_data_widgets/gifts_power/gift/total_gifts.dart';
 import 'package:web_novel_app/widgets/novel_data_widgets/gifts_power/gift/user_gift.dart';
-import 'package:web_novel_app/widgets/novel_data_widgets/gifts_power/gift_power_Container.dart';
+import 'package:web_novel_app/widgets/novel_data_widgets/gifts_power/gift_power_container.dart';
 import 'package:web_novel_app/widgets/novel_data_widgets/gifts_power/send_button.dart';
 import 'package:web_novel_app/widgets/novel_data_widgets/gifts_power/user_label.dart';
 
-import '../../../../services/novel_services/novel_bloc.dart/gifts_bloc/users_gifts_bloc/users_gifts_bloc.dart';
-import '../../../../services/novel_services/novel_bloc.dart/gifts_bloc/users_gifts_bloc/users_gifts_state.dart';
+
 
 class GiftsContainer extends StatelessWidget {
   final List<GiftsModel> gifts;

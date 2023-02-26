@@ -9,7 +9,7 @@ import '../../../../services/novel_services/novel_bloc.dart/novel_chapters_bloc/
 import '../../../../services/novel_services/novel_bloc.dart/novel_chapters_bloc/novel_chapters_event.dart';
 import '../../../../utilities/singletons/user_singleton.dart';
 import 'chapter_unLock_dialog.dart';
-
+import 'dart:developer' as debug;
 class NovelChaptersList extends StatefulWidget {
   final double height;
   final double width;
@@ -71,10 +71,10 @@ class _NovelChaptersListState extends State<NovelChaptersList> {
               } else {
                 final result = await unlockChapterDialog(
                     context: context,
-                    chapterTitle: widget.chapters[index].chapterTitle,
+                    chapterTitle: "Chapter ${index + 1 + ChaptersSingleton.currentIndex * 100}: ${widget.chapters[index].chapterTitle}",
                     optionBuilder: () => {"confirm": true});
                 if (result == null) return;
-                if (result == true) unlockTrigger(widget.novelId, widget.chapters[index].chapterId, index);
+                if (result == true) unlockTrigger(widget.novelId, widget.chapters[index].chapterId, index + ChaptersSingleton.currentIndex * 100);
               }
             }
           },

@@ -11,33 +11,25 @@ class ReviewsEventGetReviews implements ReviewsEvent {
   ReviewsEventGetReviews({required this.novelId});
 }
 
-class ReviewsEventGetReplies implements ReviewsEvent {
-  final String novelId;
-  ReviewsEventGetReplies({required this.novelId});
-}
-
-class ReviewEventAddReview implements ReviewsEvent {
+class ReviewsEventAddReview implements ReviewsEvent {
   final String novelId;
   final String content;
   final String rating;
 
-  ReviewEventAddReview(
+  ReviewsEventAddReview(
       {required this.novelId, required this.content, required this.rating});
 }
 
-class ReviewEventAddReply implements ReviewsEvent {
-  final String novelId;
+
+class ReviewsEventAddReply implements ReviewsEvent{
   final String content;
   final String otherReplyId;
-
-  ReviewEventAddReply(
-      {required this.novelId,
-      required this.content,
-      required this.otherReplyId});
+  ReviewsEventAddReply({required this.content, required this.otherReplyId});
 }
 
-class ReviewEventReact implements ReviewsEvent {
+
+class ReviewsEventReact implements ReviewsEvent {
   final String otherReplyId;
   final ReactState state;
-  ReviewEventReact({required this.otherReplyId, required this.state});
+  ReviewsEventReact({required this.otherReplyId, required this.state});
 }

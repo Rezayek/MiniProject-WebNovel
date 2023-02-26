@@ -1,10 +1,12 @@
 
+import 'dart:async';
 import 'dart:math';
 
 import 'package:web_novel_app/services/novel_services/models/chapter_model.dart';
 import 'package:web_novel_app/services/novel_services/models/gifts_model.dart';
 import 'package:web_novel_app/services/novel_services/models/novel_model.dart';
 import 'package:web_novel_app/services/novel_services/models/power_model.dart';
+
 import 'package:web_novel_app/services/novel_services/models/user_gift_model.dart';
 import 'package:web_novel_app/services/novel_services/novel_provider.dart';
 import 'package:web_novel_app/utilities/singletons/chapters_singleton.dart';
@@ -17,6 +19,7 @@ import 'novels_exceptions.dart';
 
 
 class RequestsManager implements NovelProvider {
+
   static final _shared = RequestsManager._sharedInstance();
   RequestsManager._sharedInstance();
   factory RequestsManager() => _shared;
@@ -495,4 +498,6 @@ class RequestsManager implements NovelProvider {
     //wait to test the animation
     await Future.delayed(const Duration(seconds: 5));
   }
+
+  
 }

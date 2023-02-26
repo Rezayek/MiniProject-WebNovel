@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:web_novel_app/services/novel_services/novel_bloc.dart/reviews_bloc/reviews_event.dart';
 import 'package:web_novel_app/widgets/comments_widgets/reviews/review_input/write_review_dialog.dart';
 import 'package:web_novel_app/widgets/comments_widgets/reviews/reviews_widgets/react_button.dart';
 
 import '../../../../constants/colors.dart';
 import '../../../../constants/enums.dart';
-import 'dart:developer' as debug;
+
+import '../../../../services/novel_services/novel_bloc.dart/reviews_bloc/reviews_bloc.dart';
 
 class BottomReact extends StatefulWidget {
   final double height;
@@ -40,7 +43,6 @@ class _BottomReact extends State<BottomReact> {
 
   @override
   Widget build(BuildContext context) {
-
     final width = widget.width - widget.width * 0.05;
     return Container(
       margin: EdgeInsets.only(right: widget.width * 0.05),
@@ -51,34 +53,34 @@ class _BottomReact extends State<BottomReact> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           widget.hasReplies
-          ? GestureDetector(
-            onTap: () {
-              setState(() {
-                if (!_openReplies) {
-                  _openReplies = true;
-                  widget.loadReplies(true);
-                } else {
-                  _openReplies = false;
-                  widget.loadReplies(false);
-                }
-              });
-            },
-            child: SizedBox(
-              height: widget.height,
-              width: width * 0.2,
-              child: Center(
-                child: Text(
-                  !_openReplies ? "Replies" : "Close",
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      color: !_openReplies ? black : lightPurple),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ),
-          )
-          : const SizedBox(),
+              ? GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      if (!_openReplies) {
+                        _openReplies = true;
+                        widget.loadReplies(true);
+                      } else {
+                        _openReplies = false;
+                        widget.loadReplies(false);
+                      }
+                    });
+                  },
+                  child: SizedBox(
+                    height: widget.height,
+                    width: width * 0.2,
+                    child: Center(
+                      child: Text(
+                        !_openReplies ? "Replies" : "Close",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: !_openReplies ? black : lightPurple),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ),
+                )
+              : const SizedBox(),
           GestureDetector(
             onTap: () async {
               final result = await writeReviewDialog(
@@ -86,18 +88,16 @@ class _BottomReact extends State<BottomReact> {
                   title: "Reply to ${widget.userName}",
                   isReview: false);
               if (result == null) return;
-              debug.log(result.toString());
+              launchContext(result[0]);
             },
             child: SizedBox(
               height: widget.height,
               width: width * 0.2,
               child: const Center(
-                child:Text(
+                child: Text(
                   "Reply",
                   style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      color: black),
+                      fontSize: 15, fontWeight: FontWeight.w600, color: black),
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -151,4 +151,8 @@ class _BottomReact extends State<BottomReact> {
       ),
     );
   }
+
+  void launchContext(String content) =>context.read<ReviewsBloc>().add(ReviewsEventAddReply(
+    content: content,
+    otherReplyId: widget.reviewId));
 }
