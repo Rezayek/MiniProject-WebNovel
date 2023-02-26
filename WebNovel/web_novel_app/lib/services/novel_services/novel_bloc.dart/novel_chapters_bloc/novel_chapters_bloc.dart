@@ -30,16 +30,13 @@ class NovelChaptersBloc extends Bloc<NovelChaptersEvent, NovelChaptersState> {
       (event, emit) async {
         try {
           emit(NovelChaptersStateGetChapters(
-              chapters: _chaptersSingleton
-                  .getListOfChapters(ChaptersSingleton.currentIndex),
+              chapters: _chaptersSingleton.getListOfChapters(ChaptersSingleton.currentIndex),
               index: event.index,
               exception: null, isUnlocking: true));
-          await provider.unLockChapter(
-              event.novelId, event.chapterId, event.index);
+          await provider.unLockChapter(event.novelId, event.chapterId, event.index);
           UserSingleton().makeMofications(MakeModification.coins, 15);
           emit(NovelChaptersStateGetChapters(
-              chapters: _chaptersSingleton
-                  .getListOfChapters(ChaptersSingleton.currentIndex),
+              chapters: _chaptersSingleton.getListOfChapters(ChaptersSingleton.currentIndex),
               index: event.index,
               exception: null, isUnlocking: false));
         } on Exception catch (e) {

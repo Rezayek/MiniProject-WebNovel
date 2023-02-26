@@ -4,6 +4,8 @@ import 'package:sizer/sizer.dart';
 import 'package:web_novel_app/services/novel_services/models/novel_model.dart';
 
 import 'package:web_novel_app/services/novel_services/novel_bloc.dart/novel_chapters_bloc/novel_chapters_bloc.dart';
+import 'package:web_novel_app/services/novel_services/novel_bloc.dart/reviews_bloc/reviews_bloc.dart';
+import 'package:web_novel_app/services/novel_services/reviews_provider/reviews_services.dart';
 import 'package:web_novel_app/widgets/comments_widgets/reviews/review_input/review_holder.dart';
 import 'package:web_novel_app/widgets/novel_data_widgets/chapter/novel_chapters/novel_chapters_holder.dart';
 
@@ -50,6 +52,8 @@ class _NovelViewState extends State<NovelView> {
               create: ((context) => PowerBloc(NovelServices()))),
           BlocProvider<NovelChaptersBloc>(
               create: ((context) => NovelChaptersBloc(NovelServices()))),
+          BlocProvider<ReviewsBloc>(
+              create: ((context) => ReviewsBloc(ReviewsServices()))),
         ],
         child: SingleChildScrollView(
       scrollDirection: Axis.vertical,
@@ -88,7 +92,7 @@ class _NovelViewState extends State<NovelView> {
             NovelChaptersHolder(
               novelId: novel.id,
             ),
-            const ReviewHolder(),
+            ReviewHolder(novelId: novel.id,),
             SizedBox(
               height: 0.3.h,
             )

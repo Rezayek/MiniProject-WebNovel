@@ -81,7 +81,7 @@ class _DrawerOptionState extends State<DrawerOption> {
       child: AnimatedContainer(
         margin: EdgeInsets.only(top: 2.h),
         height: 6.h,
-        width: 80.w,
+        width: 70.w,
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInCirc,
         decoration: BoxDecoration(

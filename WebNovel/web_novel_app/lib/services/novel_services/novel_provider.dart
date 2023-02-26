@@ -20,4 +20,6 @@ abstract class NovelProvider {
   Future<Map<String, dynamic>> sendPower(String novelId);
   Future<List<ChapterModel>> getChapters(String novelId);
   Future<void> unLockChapter(String novelId, String chapterId, int chapterIndex);
+
+  
 }

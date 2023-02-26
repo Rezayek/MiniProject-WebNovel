@@ -17,7 +17,7 @@ class UserRating extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(rating.toString(), style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: black),),
-          Icon(Icons.star, color: const Color.fromARGB(255, 255, 196, 0), size: width * 0.3,)
+          Icon(Icons.star, color: const Color.fromARGB(255, 255, 196, 0), size: width * 0.25,)
         ],
       ),
     );

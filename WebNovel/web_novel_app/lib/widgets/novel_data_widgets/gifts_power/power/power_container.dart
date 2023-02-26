@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:web_novel_app/services/novel_services/models/power_model.dart';
 import 'package:web_novel_app/services/novel_services/novel_bloc.dart/power_bloc/power_event.dart';
-import 'package:web_novel_app/widgets/novel_data_widgets/gifts_power/gift_power_Container.dart';
+import 'package:web_novel_app/widgets/novel_data_widgets/gifts_power/gift_power_container.dart';
 import 'package:web_novel_app/widgets/novel_data_widgets/gifts_power/power/given_power/top_given_power_dialog.dart';
 import 'package:web_novel_app/widgets/novel_data_widgets/gifts_power/power/novel_rank_container.dart';
 import 'package:web_novel_app/widgets/novel_data_widgets/gifts_power/power/total_crytals.dart';

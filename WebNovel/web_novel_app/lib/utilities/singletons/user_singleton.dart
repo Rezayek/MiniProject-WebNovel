@@ -2,7 +2,7 @@
 
 import '../../constants/enums.dart';
 import '../../services/Auth/user_cloud/user_data.dart';
-import 'dart:developer' as debug;
+
 
 class UserSingleton {
   late UserData currentUser;

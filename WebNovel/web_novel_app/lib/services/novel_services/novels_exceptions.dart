@@ -5,3 +5,5 @@ class NovelExceptionCantGetGifts implements Exception{}
 class NovelExceptionCantGetPower implements Exception{}
 class NovelExceptionCantGetChapters implements Exception{}
 class NovelExceptionCantUnLockChapter implements Exception{}
+class NovelExceptionCantGetReviews implements Exception{}
+class NovelExceptionCantGetReplies implements Exception{}
