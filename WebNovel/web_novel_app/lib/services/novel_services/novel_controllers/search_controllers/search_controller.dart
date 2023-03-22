@@ -31,7 +31,7 @@ class _SeachContollerState extends State<SeachContoller> {
       onTap: () {
         setState(() {
           FocusScope.of(context).unfocus();
-          SearchBar.isFocused = false;
+          SearchBarWidget.isFocused = false;
         });
       },
       child: BlocBuilder<SearchBloc, SearchState>(
@@ -55,7 +55,7 @@ class _SeachContollerState extends State<SeachContoller> {
                     if (isTapped) {
                       setState(() {
                         FocusScope.of(context).unfocus();
-                        SearchBar.isFocused = false;
+                        SearchBarWidget.isFocused = false;
                       });
                       context
                           .read<SearchBloc>()

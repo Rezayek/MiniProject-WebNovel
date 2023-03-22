@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:math';
+
 
 import 'package:web_novel_app/services/novel_services/models/review_model.dart';
 import 'package:web_novel_app/services/novel_services/reviews_provider/reviews_provider.dart';
@@ -8,9 +8,16 @@ import '../../../constants/review_const.dart';
 import '../../../utilities/singletons/user_singleton.dart';
 import 'dart:developer' as debug;
 
+
+
 class ReviewsManager implements ReviewsProvider {
-  List<Map<String, dynamic>> _reviews = [];
+  List<Map<String, dynamic>> _reviews =[] ;
   late final StreamController<List<Map<String, dynamic>>> _reviewsStream;
+
+  //----------------------------------------------------------------
+  // late List<UserData> _users = [] ;
+  // late final StreamController<List<UserData>> _usersStream;
+  //----------------------------------------------------------------
 
   static final _shared = ReviewsManager._sharedInstance();
   ReviewsManager._sharedInstance() {
@@ -18,6 +25,12 @@ class ReviewsManager implements ReviewsProvider {
         StreamController<List<Map<String, dynamic>>>.broadcast(onListen: () {
       _reviewsStream.sink.add(_reviews);
     });
+
+    //----------------------------------------------------------------
+    // _usersStream = StreamController<List<UserData>>.broadcast(onListen: () {
+    //   _usersStream.sink.add(_users);
+    // });
+    //----------------------------------------------------------------
   }
   factory ReviewsManager() => _shared;
 
@@ -70,11 +83,10 @@ class ReviewsManager implements ReviewsProvider {
                     "likes": "2",
                     "dislikes": "3",
                     "replies": 0,
-                    "reply":[]
+                    "reply": []
                   }
                 ]
               },
-
               {
                 "reviewId": "13",
                 "userName": "user 13",
@@ -147,7 +159,8 @@ class ReviewsManager implements ReviewsProvider {
                 "url": "",
                 "postDate": "2 months ago",
                 "rating": 4,
-                "content":"content content content content content content content content content content content content content content content content content content",
+                "content":
+                    "content content content content content content content content content content content content content content content content content content",
                 "likes": "2",
                 "dislikes": "3",
                 "replies": 1,
@@ -158,22 +171,24 @@ class ReviewsManager implements ReviewsProvider {
                     "url": "",
                     "postDate": "5 months ago",
                     "rating": 5,
-                    "content":" content content content content content content content content content content content content content content content content content content",
+                    "content":
+                        " content content content content content content content content content content content content content content content content content content",
                     "likes": "2",
                     "dislikes": "3",
                     "replies": 1,
-                    "reply":[
+                    "reply": [
                       {
                         "reviewId": "13",
                         "userName": "user 13",
                         "url": "",
                         "postDate": "5 months ago",
                         "rating": 5,
-                        "content":" content content content content content content content content content content content content content content content content content content",
+                        "content":
+                            " content content content content content content content content content content content content content content content content content content",
                         "likes": "2",
                         "dislikes": "3",
                         "replies": 0,
-                        "reply":[]
+                        "reply": []
                       }
                     ]
                   }
@@ -198,11 +213,43 @@ class ReviewsManager implements ReviewsProvider {
     _reviewsStream.add(_reviews);
   }
 
+  //----------------------------------------------------------------
+  // @override
+  // Stream<List<UserData>> usersStream() {
+  //   cacheUser();
+  //   return _usersStream.stream;
+  // }
+
+  // @override
+  // Future<void> cacheUser() async {
+    
+  //   _users = await getUser();
+  //   _usersStream.add(_users);
+  // }
+
+  // @override
+  // Future<List<UserData>> getUser() async {
+    
+  //   final userId = UserSingleton().currentUser.userId;
+  //   final user = await FirebaseFirestore.instance.collection('Users')
+  //         .where(
+  //           'user_id',
+  //           isEqualTo: userId,
+  //         )
+  //         .get()
+  //         .then(
+  //           (value) =>
+  //               value.docs.map((doc) => UserData.fromSnapshot(doc)).toList(),
+  //         );
+  //   return user;
+  // }
+
+  //----------------------------------------------------------------
+
   @override
   Future<List<Map<String, dynamic>>> getReviews(String novelId) async {
     // ignore: unused_local_variable
     final userId = UserSingleton().currentUser.userId;
-
     List<Map<String, dynamic>> reviewsList = [];
 
     for (var review in rev["reviews"]) {
@@ -221,11 +268,13 @@ class ReviewsManager implements ReviewsProvider {
       });
       reviewContainer.addAll({reviewField: reviewModel, reviewReplyField: []});
       if (review["replies"] > 0) {
-        reviewContainer[reviewReplyField] =parseReplies(review[reviewReplyField]);
+        reviewContainer[reviewReplyField] =
+            parseReplies(review[reviewReplyField]);
       }
       reviewsList.add(reviewContainer);
     }
     await Future.delayed(const Duration(seconds: 5));
+
     return reviewsList;
   }
 
@@ -248,7 +297,8 @@ class ReviewsManager implements ReviewsProvider {
       });
       reviewContainer.addAll({reviewField: reviewModel, reviewReplyField: []});
       if (reply["replies"] > 0) {
-        reviewContainer[reviewReplyField] = parseReplies(reply[reviewReplyField]);
+        reviewContainer[reviewReplyField] =
+            parseReplies(reply[reviewReplyField]);
       }
 
       replyList.add(reviewContainer);

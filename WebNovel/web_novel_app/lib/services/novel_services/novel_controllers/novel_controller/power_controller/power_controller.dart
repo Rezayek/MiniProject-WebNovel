@@ -4,7 +4,7 @@ import 'package:web_novel_app/services/novel_services/novel_bloc.dart/power_bloc
 import 'package:web_novel_app/services/novel_services/novels_exceptions.dart';
 import 'package:web_novel_app/widgets/novel_data_widgets/gifts_power/power/power_container.dart';
 
-import '../../../../../widgets/novel_data_widgets/gifts_power/gift_power_Container_Animation.dart';
+import '../../../../../widgets/novel_data_widgets/gifts_power/gift_power_container_animation.dart';
 import '../../../novel_bloc.dart/power_bloc/power_bloc.dart';
 import '../../../novel_bloc.dart/power_bloc/power_event.dart';
 

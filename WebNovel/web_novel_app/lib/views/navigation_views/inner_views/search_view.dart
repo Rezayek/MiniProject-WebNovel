@@ -28,7 +28,7 @@ class _SearchViewState extends State<SearchView> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SearchBar(
+              SearchBarWidget(
                 searchStart: (isTapped, option) {
                   context.read<SearchBloc>().add(NovelEventGetSearchResult(option: option));
                 },

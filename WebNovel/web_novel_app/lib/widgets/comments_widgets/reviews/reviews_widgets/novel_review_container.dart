@@ -1,4 +1,4 @@
-import 'dart:math';
+
 
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,7 @@ import 'package:web_novel_app/utilities/singletons/media_query_singleton.dart';
 
 import 'package:web_novel_app/widgets/comments_widgets/reviews/reviews_widgets/bottom_react.dart';
 import 'package:web_novel_app/widgets/comments_widgets/reviews/reviews_widgets/review_info_row.dart';
-import 'package:web_novel_app/widgets/comments_widgets/reviews/reviews_widgets/reviews_generator/reviews_container.dart';
+
 
 import 'package:web_novel_app/widgets/comments_widgets/reviews/reviews_widgets/user_review_content.dart';
 
@@ -53,7 +53,7 @@ class _NovelReviewContainerState extends State<NovelReviewContainer> {
 
   @override
   Widget build(BuildContext context) {
-    height = MediaQuerySingleton().generateTextHeight(widget.review.content, 16.5, widget.width) +widget.height * 0.44;
+    height = MediaQuerySingleton().generateTextHeight(widget.review.content, 16.5, widget.width, widget.height * 0.5) +widget.height * 0.44;
     return SizedBox(
       height: !_loadReplies ? height : height + maxHeightCalcul() + childHeight,
       width: widget.width,
@@ -101,7 +101,7 @@ class _NovelReviewContainerState extends State<NovelReviewContainer> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       UserReviewContent(
-                          height: MediaQuerySingleton().generateTextHeight(widget.review.content, 15, widget.width * 0.95),
+                          height: MediaQuerySingleton().generateTextHeight(widget.review.content, 15, widget.width * 0.95, widget.height * 0.5),
                           width: widget.width * 0.95,
                           content: widget.review.content),
                       BottomReact(
@@ -176,7 +176,7 @@ class _NovelReviewContainerState extends State<NovelReviewContainer> {
     var newHeight = 0.0;
     for (var reply in widget.reply) {
       var review = reply[reviewField] as ReviewModel;
-      newHeight = newHeight + (MediaQuerySingleton().generateTextHeight(review.content, 16.5, widget.width) + widget.height * 0.5) + widget.height * 0.1;
+      newHeight = newHeight + (MediaQuerySingleton().generateTextHeight(review.content, 16.5, widget.width, widget.height * 0.5) + widget.height * 0.5) + widget.height * 0.1;
     }
     return newHeight;
   }
@@ -185,7 +185,7 @@ class _NovelReviewContainerState extends State<NovelReviewContainer> {
     var newHeight = 0.0;
     for (int i = 0; i < widget.reply.length - 1; i++) {
       var review = widget.reply[i][reviewField] as ReviewModel;
-      newHeight = newHeight + (MediaQuerySingleton().generateTextHeight(review.content, 16.5, widget.width * 0.95) +widget.height * 0.5) + widget.height * 0.1;
+      newHeight = newHeight + (MediaQuerySingleton().generateTextHeight(review.content, 16.5, widget.width * 0.95, widget.height * 0.5) +widget.height * 0.5) + widget.height * 0.1;
     }
     return newHeight;
   }
