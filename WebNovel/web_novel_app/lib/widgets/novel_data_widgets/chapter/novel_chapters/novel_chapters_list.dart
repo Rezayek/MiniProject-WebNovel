@@ -8,8 +8,7 @@ import 'package:web_novel_app/widgets/novel_data_widgets/chapter/novel_chapters/
 import '../../../../services/novel_services/novel_bloc.dart/novel_chapters_bloc/novel_chapters_bloc.dart';
 import '../../../../services/novel_services/novel_bloc.dart/novel_chapters_bloc/novel_chapters_event.dart';
 import '../../../../utilities/singletons/user_singleton.dart';
-import 'chapter_unLock_dialog.dart';
-import 'dart:developer' as debug;
+import 'chapter_unlock_dialog.dart';
 class NovelChaptersList extends StatefulWidget {
   final double height;
   final double width;

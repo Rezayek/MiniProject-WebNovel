@@ -1,4 +1,4 @@
-import 'package:web_novel_app/services/novel_services/models/review_model.dart';
+
 import 'package:web_novel_app/services/novel_services/reviews_provider/reviews_manager.dart';
 import 'package:web_novel_app/services/novel_services/reviews_provider/reviews_provider.dart';
 
@@ -28,4 +28,22 @@ class ReviewsServices implements ReviewsProvider {
 
   @override
   Stream<List<Map<String, dynamic>>> reviewsStream(String novelId) => provider.reviewsStream(novelId);
+
+  //----------------------------------------------------------------
+  // @override
+  // Future<void> cacheUser() {
+  //   // TODO: implement cacheUser
+  //   throw UnimplementedError();
+  // }
+
+  // @override
+  // Future<List<UserData>> getUser() {
+  //   // TODO: implement getUser
+  //   throw UnimplementedError();
+  // }
+
+  // @override
+  // Stream<List<UserData>> usersStream() => provider.usersStream();
+
+  //----------------------------------------------------------------
 }

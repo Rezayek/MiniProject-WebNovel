@@ -7,7 +7,7 @@ import 'package:web_novel_app/services/novel_services/novels_exceptions.dart';
 
 
 import '../../../../../../widgets/novel_data_widgets/gifts_power/gift/gifts_container.dart';
-import '../../../../../../widgets/novel_data_widgets/gifts_power/gift_power_Container_Animation.dart';
+import '../../../../../../widgets/novel_data_widgets/gifts_power/gift_power_container_animation.dart';
 
 import '../../../../novel_bloc.dart/gifts_bloc/users_gifts_bloc/users_gifts_bloc.dart';
 

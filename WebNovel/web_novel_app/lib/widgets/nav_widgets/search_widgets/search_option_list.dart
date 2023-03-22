@@ -22,7 +22,7 @@ class _SearchOptionListState extends State<SearchOptionList> {
       onTap: () {
         setState(() {
           FocusScope.of(context).unfocus();
-          SearchBar.isFocused = false;
+          SearchBarWidget.isFocused = false;
         });
       },
       child: Container(

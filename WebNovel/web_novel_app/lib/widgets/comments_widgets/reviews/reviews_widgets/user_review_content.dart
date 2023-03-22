@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 
 import '../../../../constants/colors.dart';
 
@@ -16,8 +15,8 @@ class UserReviewContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: width * 0.05, right: width * 0.05),
-      padding: EdgeInsets.all(width * 0.01),
+      margin: EdgeInsets.only(left: width * 0.015, right: width * 0.005),
+      padding: EdgeInsets.all(width * 0.005),
       height: height,
       width: width - width * 0.1,
       decoration: BoxDecoration(

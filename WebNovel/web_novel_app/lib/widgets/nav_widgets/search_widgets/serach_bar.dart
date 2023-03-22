@@ -7,19 +7,19 @@ import 'package:web_novel_app/constants/colors.dart';
 import '../../../services/novel_services/novel_bloc.dart/search_bloc.dart/search_bloc.dart';
 import '../../../services/novel_services/novel_bloc.dart/search_bloc.dart/search_event.dart';
 
-class SearchBar extends StatefulWidget {
+class SearchBarWidget extends StatefulWidget {
   final Function(bool, String) searchStart;
   static bool isFocused = false;
-  const SearchBar({
+  const SearchBarWidget({
     super.key,
     required this.searchStart,
   });
 
   @override
-  State<SearchBar> createState() => _SearchBarState();
+  State<SearchBarWidget> createState() => _SearchBarWidgetState();
 }
 
-class _SearchBarState extends State<SearchBar> {
+class _SearchBarWidgetState extends State<SearchBarWidget> {
   late final TextEditingController searchText;
   FocusNode focusNode = FocusNode();
   @override
@@ -64,21 +64,21 @@ class _SearchBarState extends State<SearchBar> {
               child: TextField(
                 focusNode: focusNode,
                 controller: searchText,
-                autofocus: SearchBar.isFocused ? true : false,
+                autofocus: SearchBarWidget.isFocused ? true : false,
                 onSubmitted: (value) {
                   FocusScope.of(context).unfocus();
-                  SearchBar.isFocused = false;
+                  SearchBarWidget.isFocused = false;
                   widget.searchStart(true, searchText.text);
                 },
                 onTap: () {
-                  if (SearchBar.isFocused) {
+                  if (SearchBarWidget.isFocused) {
                     setState(() {
                       FocusScope.of(context).unfocus();
-                      SearchBar.isFocused = false;
+                      SearchBarWidget.isFocused = false;
                     });
-                  } else if (!SearchBar.isFocused) {
+                  } else if (!SearchBarWidget.isFocused) {
                     setState(() {
-                      SearchBar.isFocused = true;
+                      SearchBarWidget.isFocused = true;
                       context
                           .read<SearchBloc>()
                           .add(NovelEventGetSearchHistory());
@@ -101,7 +101,7 @@ class _SearchBarState extends State<SearchBar> {
                 onTap: () {
                   setState(() {
                     FocusScope.of(context).unfocus();
-                    SearchBar.isFocused = false;
+                    SearchBarWidget.isFocused = false;
                   });
                   widget.searchStart(true, searchText.text);
                 },
@@ -115,7 +115,7 @@ class _SearchBarState extends State<SearchBar> {
               onWillPop: () async {
                 setState(() {
                   FocusScope.of(context).unfocus();
-                  SearchBar.isFocused = false;
+                  SearchBarWidget.isFocused = false;
                 });
                 return false;
               },

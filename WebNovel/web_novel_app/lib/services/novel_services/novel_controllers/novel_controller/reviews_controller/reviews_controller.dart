@@ -6,7 +6,6 @@ import '../../../../../widgets/comments_widgets/reviews/reviews_widgets/reviews_
 import '../../../novel_bloc.dart/reviews_bloc/reviews_bloc.dart';
 import '../../../novel_bloc.dart/reviews_bloc/reviews_state.dart';
 import '../../../novels_exceptions.dart';
-import 'dart:developer' as debug;
 
 class ReviewsController extends StatefulWidget {
   final String novelId;
@@ -30,6 +29,7 @@ class _ReviewsControllerState extends State<ReviewsController> {
     return BlocBuilder<ReviewsBloc, ReviewsState>(
       builder: (context, state) {
         if (state is ReviewsStateGetReviews) {
+
           if (state.exception is NovelExceptionCantGetReviews) {
             return Container();
           }

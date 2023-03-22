@@ -5,7 +5,6 @@ import 'package:web_novel_app/services/novel_services/novel_bloc.dart/reviews_bl
 import 'package:web_novel_app/services/novel_services/novels_exceptions.dart';
 import 'package:web_novel_app/services/novel_services/reviews_provider/reviews_provider.dart';
 
-import '../../../../constants/review_const.dart';
 
 
 
@@ -19,6 +18,14 @@ class ReviewsBloc extends Bloc<ReviewsEvent, ReviewsState> {
             onData: (List<Map<String, dynamic>> reviews) => ReviewsStateGetReviews(
               reviews: reviews, exception: null),
           );
+          // debug.log("getting users");
+          // await emit.forEach<List<UserData>>(
+          //   provider.usersStream(),
+          //   onData: (List<UserData> users) => ReviewsStateGetReviews(
+          //     reviews:  [], exception: null),
+          // );
+
+
         } on Exception {
           emit(ReviewsStateGetReviews(reviews: [], exception: NovelExceptionCantGetReviews()));
         }
