@@ -268,8 +268,7 @@ class ReviewsManager implements ReviewsProvider {
       });
       reviewContainer.addAll({reviewField: reviewModel, reviewReplyField: []});
       if (review["replies"] > 0) {
-        reviewContainer[reviewReplyField] =
-            parseReplies(review[reviewReplyField]);
+        reviewContainer[reviewReplyField] = parseReplies(review[reviewReplyField]);
       }
       reviewsList.add(reviewContainer);
     }
@@ -297,8 +296,7 @@ class ReviewsManager implements ReviewsProvider {
       });
       reviewContainer.addAll({reviewField: reviewModel, reviewReplyField: []});
       if (reply["replies"] > 0) {
-        reviewContainer[reviewReplyField] =
-            parseReplies(reply[reviewReplyField]);
+        reviewContainer[reviewReplyField] = parseReplies(reply[reviewReplyField]);
       }
 
       replyList.add(reviewContainer);

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:sizer/sizer.dart';
 import 'package:web_novel_app/constants/colors.dart';
 
 import '../../../../../constants/review_const.dart';
@@ -79,17 +77,14 @@ class _ReviewsContainerState extends State<ReviewsContainer> {
                     : 10
                 : 0,
             itemBuilder: (context, index) {
-              ReviewModel review =
-                  _generalReviews[index][reviewField] as ReviewModel;
+              ReviewModel review = _generalReviews[index][reviewField] as ReviewModel;
               return NovelReviewContainer(
-                height: 32.h,
                 width: widget.width,
                 hasReplies: review.repliesNumber == 0 ? false : true,
                 isReply: widget.isReply,
                 review: review,
                 reply: _generalReviews[index][reviewReplyField],
                 novelId: widget.novelId,
-                changeHeight: (double newHeight) {},
               );
             }),
       ),

@@ -3,39 +3,20 @@ import 'package:flutter/material.dart';
 import '../../../../constants/colors.dart';
 
 class UserReviewContent extends StatelessWidget {
-  final double height;
   final double width;
   final String content;
-  const UserReviewContent(
-      {super.key,
-      required this.height,
-      required this.width,
-      required this.content});
+  const UserReviewContent({super.key, required this.content, required this.width});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: width * 0.015, right: width * 0.005),
-      padding: EdgeInsets.all(width * 0.005),
-      height: height,
-      width: width - width * 0.1,
-      decoration: BoxDecoration(
-          color: white,
-          borderRadius: BorderRadius.circular(15),
-          boxShadow: [
-            BoxShadow(
-                blurRadius: 0.75,
-                offset: const Offset(1, 1),
-                color: black.withOpacity(0.5)),
-            BoxShadow(
-                blurRadius: 0.75,
-                offset: const Offset(-1, -1),
-                color: black.withOpacity(0.5)),
-          ]),
+      width: width,
+      margin: EdgeInsets.only(left: width * 0.02, right: width * 0.02),
+      padding: EdgeInsets.all(width * 0.01),
       child: Text(
         content,
         style: const TextStyle(
-        fontSize: 15, fontWeight: FontWeight.w400, color: black),
+            fontSize: 15, fontWeight: FontWeight.w400, color: black),
       ),
     );
   }

@@ -74,11 +74,11 @@ class _NovelChapterContainerState extends State<NovelChapterContainer> {
         }
       },
       child: GestureDetector(
-        onTap: () {
-          if (_isUnlocking) return;
+        onTap: () {          
           if (!_chapterState) {
             widget.onTap(true);
           } else {
+            Navigator.of(context).pushNamed("/chapter", arguments: widget.chapterModel.chapterId); 
             widget.onTap(false);
           }
         },

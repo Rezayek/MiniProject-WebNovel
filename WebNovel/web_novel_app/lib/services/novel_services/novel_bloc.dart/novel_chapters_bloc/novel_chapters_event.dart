@@ -13,7 +13,7 @@ class NovelChapterEventGetNovelChapters implements NovelChaptersEvent {
 
 class NovelChapterEventLockChapter implements NovelChaptersEvent {
   final String novelId;
-  final String chapterId;
+  final int chapterId;
   final int index;
 
   NovelChapterEventLockChapter({required this.novelId, required this.chapterId, required this.index, });

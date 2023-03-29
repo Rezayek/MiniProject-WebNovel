@@ -1,4 +1,6 @@
+import 'package:web_novel_app/services/novel_services/models/chapter_general_model.dart';
 import 'package:web_novel_app/services/novel_services/models/chapter_model.dart';
+import 'package:web_novel_app/services/novel_services/models/comment_model.dart';
 import 'package:web_novel_app/services/novel_services/models/gifts_model.dart';
 import 'package:web_novel_app/services/novel_services/models/novel_model.dart';
 import 'package:web_novel_app/services/novel_services/models/user_gift_model.dart';
@@ -30,8 +32,7 @@ class NovelServices implements NovelProvider {
   Future<List<NovelModel>> getReadersNovels() => provider.getReadersNovels();
 
   @override
-  Future<Map<String, List<NovelModel>>> getRecomendedNovels() =>
-      provider.getRecomendedNovels();
+  Future<Map<String, List<NovelModel>>> getRecomendedNovels() => provider.getRecomendedNovels();
 
   @override
   Future<List<NovelModel>> getWeeklyNovels() => provider.getWeeklyNovels();
@@ -57,5 +58,20 @@ class NovelServices implements NovelProvider {
   Future<List<ChapterModel>> getChapters(String novelId) => provider.getChapters(novelId);
 
   @override
-  Future<void> unLockChapter(String novelId, String chapterId, int chapterIndex) => provider.unLockChapter(novelId, chapterId, chapterIndex);
+  Future<void> unLockChapter(String novelId, int chapterId, int chapterIndex) => provider.unLockChapter(novelId, chapterId, chapterIndex);
+
+  @override
+  Future<ChapterGeneralModel> getChapterContent(int chapterId) => provider.getChapterContent(chapterId);
+
+  @override
+  Future<void> addChapterComments(int chapterId, String content) => provider.addChapterComments(chapterId, content);
+
+  @override
+  Future<void> addTextComments(int textId, String content) => provider.addTextComments(textId, content);
+
+  @override
+  Future<List<CommentModel>> getChapterComments(int chapterId) => provider.getChapterComments(chapterId);
+
+  @override
+  Future<List<CommentModel>> getTextComments(int textId) => provider.getTextComments(textId);
 }
