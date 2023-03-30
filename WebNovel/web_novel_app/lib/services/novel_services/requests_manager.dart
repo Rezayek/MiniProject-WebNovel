@@ -519,7 +519,9 @@ class RequestsManager implements NovelProvider {
                       lorem(paragraphs: 1, words: Random().nextInt(60) + 5),
                   textId: 1,
                   totalComments: Random().nextInt(25) + 1)),
-          isNextLocked: true);
+          isNextLocked: true, 
+          chapterAudio: "https://traffic.libsyn.com/testguildperf/tgpVijayPerformanceTestingBigData110_.mp3?_=1", 
+          novelImg: 'https://img.webnovel.com/bookcover/7996858406002505/150/150.jpg?coverUpdateTime=1547701210061&imageMogr2/quality/80"');
     } catch (e) {
       throw NovelExceptionCantGetChapterContent();
     }

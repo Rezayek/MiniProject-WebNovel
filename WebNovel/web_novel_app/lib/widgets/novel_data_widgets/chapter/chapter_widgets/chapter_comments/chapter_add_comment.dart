@@ -23,7 +23,8 @@ class _ChapterAddCommentState extends State<ChapterAddComment> {
   }
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      margin: const EdgeInsets.only(right: 5, left: 5),
       height: 60,
       width: 350,
       child: Row(

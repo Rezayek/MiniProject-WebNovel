@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
-import 'package:web_novel_app/services/novel_services/novel_provider.dart';
-import 'package:web_novel_app/widgets/novel_data_widgets/chapter/chapter_widgets/chapter_comments/chapter_add_comment.dart';
-import 'package:web_novel_app/widgets/novel_data_widgets/chapter/chapter_widgets/chapter_comments/chapters_comment_container.dart';
-
 import '../../../../../constants/colors.dart';
-import 'dart:developer' as debug;
-
 import '../../../../../services/novel_services/novel_bloc.dart/comment_bloc/comment_bloc.dart';
-import '../../../../../services/novel_services/novel_bloc.dart/comment_bloc/comment_event.dart';
 import '../../../../../services/novel_services/novel_controllers/novel_controller/comment_controller/comment_controller.dart';
 import '../../../../../services/novel_services/novel_services.dart';
 
@@ -20,9 +13,9 @@ Future<T?> chapterCommentDialog<T>({
 }) {
   return showDialog(
       context: context,
-      builder: (context) {
+      builder: (contextDialog) {
         return BlocProvider(
-          create: (context) => CommentBloc(NovelServices()),
+          create: (contextDialog) => CommentBloc(NovelServices()),
           child: AlertDialog(
             titlePadding: const EdgeInsets.all(0),
             shape: RoundedRectangleBorder(
@@ -66,26 +59,10 @@ Future<T?> chapterCommentDialog<T>({
               ),
             ),
             contentPadding: const EdgeInsets.only(top: 5),
-            content: Container(
+            content: SizedBox(
               height: 60.h,
-              decoration: const BoxDecoration(color: white),
-              child: Column(
-                children: [
-                  Container(
-                    height: 50.h,
-                    decoration: const BoxDecoration(color: white),
-                    child: CommentController(isTextComment:isTextComment, id: id,),
-                  ),
-                  ChapterAddComment(
-                    addComment: (isTapped, comment) {
-                      if (isTapped) {
-                        debug.log(comment);
-                      }
-                    },
-                  )
-                ],
-              ),
-            ),
+              width: 80.w,
+              child: CommentController(isTextComment: isTextComment, id: id,)),
           ),
         );
       });

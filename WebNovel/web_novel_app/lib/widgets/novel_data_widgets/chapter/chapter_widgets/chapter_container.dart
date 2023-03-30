@@ -8,6 +8,7 @@ import 'package:web_novel_app/widgets/novel_data_widgets/chapter/chapter_widgets
 import '../../../../constants/colors.dart';
 import '../../../../services/novel_services/novel_bloc.dart/chapter_bloc/chapter_bloc.dart';
 import '../../../../services/novel_services/novel_bloc.dart/chapter_bloc/chapter_event.dart';
+import 'audio_player/audio_player_Widget.dart';
 import 'buttons_bar.dart';
 import 'chapter_comments/chapter_comment_dialog.dart';
 
@@ -22,12 +23,9 @@ class ChapterContainer extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       child: content!.content.isEmpty
           ? emptyChapter(context)
-          : ListView.builder(
+          : ListView(
               scrollDirection: Axis.vertical,
-              itemCount: content!.content.length + 2,
-              itemBuilder: (context, index) {
-                return buildWidget(index, context);
-              },
+              children: buildWidget(content!.content.length + 3, context),
             ),
     );
   }
@@ -63,56 +61,74 @@ class ChapterContainer extends StatelessWidget {
         ),
       );
 
-  Widget buildWidget(index, BuildContext context) {
-    if (index == 0) {
-      return ResponsiveText(
-        content: content!.chapterTitle,
-        fontSize: 22,
-        fontWeight: FontWeight.w500,
-        textColor: black,
-        isText: false,
-        commentsTotal: null,
-        openComments: null,
-      );
-    } else if (index == content!.content.length + 1) {
-      return ButtonsBar(
-        backFunc: (bool istapped) {
-          if (istapped) {
-          } else {
-            return;
-          }
-        },
-        commentFunc: (bool istapped)async {
-          if (istapped) {
-            await chapterCommentDialog(context: context, isTextComment: false, id: content!.chapterId);
-          } else {
-            return;
-          }
-        },
-        nextFunc: (bool istapped) {
-          if (istapped) {
-            if (content!.isNextLocked) {
-              context
-                  .read<ChapterBloc>()
-                  .add(ChapterEventGetChapter(chapterId: content!.chapterId));
+  List<Widget> buildWidget(int count, BuildContext context) {
+    List<Widget> widgets = [];
+    for (int index = 0; index < count; index++) {
+      if (index == 0) {
+        widgets.add(ResponsiveText(
+          content: content!.chapterTitle,
+          fontSize: 22,
+          fontWeight: FontWeight.w500,
+          textColor: black,
+          isText: false,
+          commentsTotal: null,
+          openComments: null,
+        ));
+      } else if (index == 1) {
+        widgets.add(AudioPlayerWidget(
+          audioUrl: content!.chapterAudio,
+          imgUrl: content!.novelImg,
+          title: content!.chapterTitle,
+        ));
+      } else if (index == content!.content.length + 2) {
+        widgets.add(ButtonsBar(
+          backFunc: (bool istapped) {
+            if (istapped) {
+            } else {
+              return;
             }
-          } else {
-            return;
-          }
-        },
-      );
-    } else {
-      return ResponsiveText(
-        content: content!.content[index - 1].content,
-        fontSize: 18,
-        fontWeight: FontWeight.w400,
-        textColor: black,
-        isText: true,
-        commentsTotal: content!.content[index - 1].totalComments,
-        openComments: (isTapped) async {
-          await chapterCommentDialog(context: context, isTextComment: true, id: content!.content[index - 1].textId);
-        },
-      );
+          },
+          commentFunc: (bool istapped) async {
+            if (istapped) {
+              await chapterCommentDialog(
+                  context: context,
+                  isTextComment: false,
+                  id: content!.chapterId);
+            } else {
+              return;
+            }
+          },
+          nextFunc: (bool istapped) {
+            if (istapped) {
+              if (content!.isNextLocked) {
+                context
+                    .read<ChapterBloc>()
+                    .add(ChapterEventGetChapter(chapterId: content!.chapterId));
+              }
+            } else {
+              return;
+            }
+          },
+        ));
+      } else {
+        widgets.add(ResponsiveText(
+          content: content!.content[index - 2].content,
+          fontSize: 18,
+          fontWeight: FontWeight.w400,
+          textColor: black,
+          isText: true,
+          commentsTotal: content!.content[index - 2].totalComments,
+          openComments: (isTapped) async {
+            await chapterCommentDialog(
+                context: context,
+                isTextComment: true,
+                id: content!.content[index - 1].textId);
+          },
+        ));
+      }
+
+      
     }
+    return widgets;
   }
 }

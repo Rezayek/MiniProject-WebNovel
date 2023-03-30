@@ -43,7 +43,7 @@ class CommentBloc extends Bloc<CommentEvent, CommentState> {
     on<CommentEventAddTextComment>(
       (event, emit) async {
         try {
-          await provider.addChapterComments(event.textId, event.comment );
+          await provider.addTextComments(event.textId, event.comment );
         } on Exception catch (e) {
           emit(CommentStateGetComment(comments: [], exception: e));
         }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sizer/sizer.dart';
 import 'package:web_novel_app/widgets/novel_data_widgets/chapter/chapter_widgets/chapter_comments/chapter_comment_animation.dart';
 
+import '../../../../../constants/colors.dart';
+import '../../../../../widgets/novel_data_widgets/chapter/chapter_widgets/chapter_comments/chapter_add_comment.dart';
 import '../../../../../widgets/novel_data_widgets/chapter/chapter_widgets/chapter_comments/chapters_comment_container.dart';
 import '../../../novel_bloc.dart/comment_bloc/comment_bloc.dart';
 import '../../../novel_bloc.dart/comment_bloc/comment_event.dart';
@@ -37,7 +40,31 @@ class _CommentControllerState extends State<CommentController> {
         if (state is CommentStateLoadingComment) {
           return const ChapterCommentAnimation();
         } else if (state is CommentStateGetComment) {
-          return const ChapterCommentsContainer();
+          return Container(
+            height: 60.h,
+            width: 80.w,
+            decoration: const BoxDecoration(color: white),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 50.h,
+                  child: ChapterCommentsContainer(comments: state.comments,)),
+                ChapterAddComment(
+                      addComment: (isTapped, comment) {
+                        if (isTapped) {
+                          if(widget.isTextComment){
+                            context.read<CommentBloc>().add(CommentEventAddTextComment(textId: widget.id, comment: comment));
+                          }else{
+                            context.read<CommentBloc>().add(CommentEventAddChapterComment(chapterId: widget.id, comment: comment));
+                          }
+                        }
+                      },
+                    )
+              ],
+            ),
+          );
         }
         return Container();
       },
