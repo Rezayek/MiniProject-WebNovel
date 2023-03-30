@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:web_novel_app/views/other_views/novel_views/chapter_view.dart';
 import 'package:web_novel_app/views/other_views/novel_views/novel_view.dart';
 
 import '../app_controller.dart';
@@ -57,6 +58,11 @@ class AppRouter {
           settings: routeSettings,
           builder: (_) =>
                 BlocProvider.value(value: authBloc, child: const NovelView()));
+      case "/chapter":
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (_) =>
+                  BlocProvider.value(value: authBloc, child: const ChapterView()));
     }
     return null;
   }

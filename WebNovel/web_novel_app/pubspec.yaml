@@ -48,7 +48,11 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   flutter_native_splash: ^2.2.17
   sizer: ^2.0.15
-  
+  flutter_lorem: ^2.0.0
+  audio_video_progress_bar: ^1.0.1
+  just_audio: ^0.9.32
+  just_audio_background: ^0.0.1-beta.9
+  rxdart: ^0.27.7
 
 
 flutter_native_splash:

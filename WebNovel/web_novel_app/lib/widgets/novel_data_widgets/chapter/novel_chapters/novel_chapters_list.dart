@@ -9,6 +9,7 @@ import '../../../../services/novel_services/novel_bloc.dart/novel_chapters_bloc/
 import '../../../../services/novel_services/novel_bloc.dart/novel_chapters_bloc/novel_chapters_event.dart';
 import '../../../../utilities/singletons/user_singleton.dart';
 import 'chapter_unlock_dialog.dart';
+
 class NovelChaptersList extends StatefulWidget {
   final double height;
   final double width;
@@ -72,7 +73,7 @@ class _NovelChaptersListState extends State<NovelChaptersList> {
     );
   }
 
-  void unlockTrigger(String novelId, String chapterId, int index) => context.read<NovelChaptersBloc>().add(
+  void unlockTrigger(String novelId, int chapterId, int index) => context.read<NovelChaptersBloc>().add(
     NovelChapterEventLockChapter(
         novelId: novelId,
         chapterId: chapterId,

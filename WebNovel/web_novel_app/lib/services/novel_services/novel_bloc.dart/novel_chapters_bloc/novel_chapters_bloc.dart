@@ -1,8 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:web_novel_app/constants/enums.dart';
 import 'package:web_novel_app/services/novel_services/novel_provider.dart';
 import 'package:web_novel_app/utilities/singletons/chapters_singleton.dart';
-import 'package:web_novel_app/utilities/singletons/user_singleton.dart';
+
 
 import 'novel_chapters_event.dart';
 import 'novel_chapters_state.dart';
@@ -34,7 +33,7 @@ class NovelChaptersBloc extends Bloc<NovelChaptersEvent, NovelChaptersState> {
               index: event.index,
               exception: null, isUnlocking: true));
           await provider.unLockChapter(event.novelId, event.chapterId, event.index);
-          UserSingleton().makeMofications(MakeModification.coins, 15);
+          
           emit(NovelChaptersStateGetChapters(
               chapters: _chaptersSingleton.getListOfChapters(ChaptersSingleton.currentIndex),
               index: event.index,

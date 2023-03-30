@@ -10,7 +10,6 @@ import '../../../../constants/enums.dart';
 import '../../../../services/novel_services/novel_bloc.dart/reviews_bloc/reviews_bloc.dart';
 
 class BottomReact extends StatefulWidget {
-  final double height;
   final double width;
   final ReactState reactState;
   final bool hasReplies;
@@ -19,7 +18,6 @@ class BottomReact extends StatefulWidget {
   final Function(bool loadReplies) loadReplies;
   const BottomReact(
       {super.key,
-      required this.height,
       required this.width,
       required this.reactState,
       required this.hasReplies,
@@ -44,9 +42,10 @@ class _BottomReact extends State<BottomReact> {
   @override
   Widget build(BuildContext context) {
     final width = widget.width - widget.width * 0.05;
+    const double height = 50;
     return Container(
       margin: EdgeInsets.only(right: widget.width * 0.05),
-      height: widget.height ,
+      height: height,
       width: width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -66,7 +65,7 @@ class _BottomReact extends State<BottomReact> {
                     });
                   },
                   child: SizedBox(
-                    height: widget.height,
+                    height: height,
                     width: width * 0.2,
                     child: Center(
                       child: Text(
@@ -91,7 +90,7 @@ class _BottomReact extends State<BottomReact> {
               launchContext(result[0]);
             },
             child: SizedBox(
-              height: widget.height,
+              height: height,
               width: width * 0.2,
               child: const Center(
                 child: Text(
@@ -120,7 +119,7 @@ class _BottomReact extends State<BottomReact> {
                 });
               },
               child: ReactButton(
-                  height: widget.height,
+                  height: height,
                   width: width * 0.15,
                   size: width * 0.1,
                   isUp: true,
@@ -142,7 +141,7 @@ class _BottomReact extends State<BottomReact> {
                 });
               },
               child: ReactButton(
-                  height: widget.height,
+                  height: height,
                   width: width * 0.15,
                   size: width * 0.1,
                   isUp: false,
@@ -152,7 +151,6 @@ class _BottomReact extends State<BottomReact> {
     );
   }
 
-  void launchContext(String content) =>context.read<ReviewsBloc>().add(ReviewsEventAddReply(
-    content: content,
-    otherReplyId: widget.reviewId));
+  void launchContext(String content) => context.read<ReviewsBloc>().add(
+      ReviewsEventAddReply(content: content, otherReplyId: widget.reviewId));
 }

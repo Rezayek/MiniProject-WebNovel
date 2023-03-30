@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:web_novel_app/services/novel_services/novel_controllers/novel_controller/chapters_controller.dart/chapters_controller.dart';
 
 
 import '../../../../constants/colors.dart';
+import '../../../../services/novel_services/novel_controllers/novel_controller/chapters_controller/chapters_controller.dart';
 import '../../../nav_widgets/home_widgets/label/label.dart';
 
 class NovelChaptersHolder extends StatefulWidget {

@@ -1,6 +1,5 @@
 import 'package:web_novel_app/services/novel_services/models/chapter_model.dart';
 
-
 class ChaptersSingleton {
   static int currentIndex = 0;
   List<ChapterModel> chapters = [];
@@ -21,6 +20,7 @@ class ChaptersSingleton {
         chapterRelease: chapters[index].chapterRelease,
         isLocked: false);
   }
+
 
   bool isChapterLocked(int index) {
     if (chapters.isEmpty) return false;

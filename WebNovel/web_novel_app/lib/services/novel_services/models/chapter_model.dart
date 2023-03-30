@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../constants/chapter.dart';
 @immutable
 class ChapterModel {
-  final String chapterId;
+  final int chapterId;
   final String chapterTitle;
   final String chapterRelease;
   final bool isLocked;

@@ -7,3 +7,7 @@ class NovelExceptionCantGetChapters implements Exception{}
 class NovelExceptionCantUnLockChapter implements Exception{}
 class NovelExceptionCantGetReviews implements Exception{}
 class NovelExceptionCantGetReplies implements Exception{}
+class NovelExceptionCantGetChapterContent implements Exception{}
+class NovelExceptionCantGetChapterComment implements Exception{}
+class NovelExceptionCantGetTextComment implements Exception{}
+class NovelExceptionCantAddComment implements Exception{}
