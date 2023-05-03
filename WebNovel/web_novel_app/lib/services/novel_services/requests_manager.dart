@@ -477,7 +477,7 @@ class RequestsManager implements NovelProvider {
               "chapterTitle":
                   "The heart of a demon never has regret enven in death ",
               "chapterRelease": "july 7-2020",
-              "isLocked": false,
+              "isLocked": true,
             }));
 
     //wait to test the animation

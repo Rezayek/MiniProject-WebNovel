@@ -213,39 +213,6 @@ class ReviewsManager implements ReviewsProvider {
     _reviewsStream.add(_reviews);
   }
 
-  //----------------------------------------------------------------
-  // @override
-  // Stream<List<UserData>> usersStream() {
-  //   cacheUser();
-  //   return _usersStream.stream;
-  // }
-
-  // @override
-  // Future<void> cacheUser() async {
-    
-  //   _users = await getUser();
-  //   _usersStream.add(_users);
-  // }
-
-  // @override
-  // Future<List<UserData>> getUser() async {
-    
-  //   final userId = UserSingleton().currentUser.userId;
-  //   final user = await FirebaseFirestore.instance.collection('Users')
-  //         .where(
-  //           'user_id',
-  //           isEqualTo: userId,
-  //         )
-  //         .get()
-  //         .then(
-  //           (value) =>
-  //               value.docs.map((doc) => UserData.fromSnapshot(doc)).toList(),
-  //         );
-  //   return user;
-  // }
-
-  //----------------------------------------------------------------
-
   @override
   Future<List<Map<String, dynamic>>> getReviews(String novelId) async {
     // ignore: unused_local_variable

@@ -65,9 +65,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             emit(const AuthStateNeedsVerification(isLoading: false));
           } else {
             final userData = UserSingleton();
-            final data =
-                await UserDataFirebase().getUserData(userAcountId: user.id);
-
+            final data = await UserDataFirebase().getUserData(userAcountId: user.id);
             userData.setUser(data[0]);
             emit(AuthStateLoggedIn(user: user, isLoading: false));
           }
