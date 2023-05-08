@@ -71,7 +71,7 @@ Future<T?> novelDialog<T>({
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: SizedBox(
-              height: 70.h + novel.tags.length * 2.5.h + novel.description.length  * 0.9.h,
+              height: 80.h + novel.tags.length * 2.5.h + novel.description.length  * 0.6.h,
               width: 85.w,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
