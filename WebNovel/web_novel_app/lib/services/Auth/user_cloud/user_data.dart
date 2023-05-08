@@ -14,6 +14,7 @@ class UserData {
   final int level;
   final int exp;
   final String imageUrl;
+  final String token;
 
   const UserData({
     required this.userDataId,
@@ -27,9 +28,11 @@ class UserData {
     required this.level,
     required this.exp,
     required this.imageUrl,
+    required this.token,
   });
 
-  UserData.fromSnapshot(QueryDocumentSnapshot<Map<String, dynamic>> snapshot)
+  UserData.fromSnapshot(
+      QueryDocumentSnapshot<Map<String, dynamic>> snapshot, this.token)
       : userDataId = snapshot.id,
         userId = snapshot.data()['user_id'],
         name = snapshot.data()['name'],

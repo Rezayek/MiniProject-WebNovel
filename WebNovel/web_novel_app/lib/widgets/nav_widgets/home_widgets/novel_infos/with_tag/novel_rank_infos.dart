@@ -59,16 +59,16 @@ class NovelRankInfos extends StatelessWidget {
                             style: const TextStyle(
                                 color: white,
                                 fontSize: 20,
-                                fontWeight: FontWeight.w500),
+                                fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis
                           ),
                         ),
                       ))
                 ],
               ),
             ),
-            Padding(
-              padding:
-                  EdgeInsets.only(left: 1.w),
+            SizedBox(
+              height: 16.h,
+              width: 55.w,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +76,7 @@ class NovelRankInfos extends StatelessWidget {
                   Text(
                     novel.name,
                     style: const TextStyle(
-                        color: black, fontSize: 20, fontWeight: FontWeight.w600),
+                        color: black, fontSize: 17, fontWeight: FontWeight.w600), overflow: TextOverflow.ellipsis
                   ),
                   Padding(
                     padding: EdgeInsets.only(

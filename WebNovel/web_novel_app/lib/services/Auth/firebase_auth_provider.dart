@@ -5,7 +5,7 @@ import '../../firebase_options.dart';
 import 'auth_exceptions.dart';
 import 'auth_provider.dart';
 import 'auth_user.dart';
-import 'dart:developer' as debug;
+
 
 class FirebaseAuthProvider implements AuthProvider {
   @override
@@ -48,11 +48,11 @@ class FirebaseAuthProvider implements AuthProvider {
   }
 
   @override
-  Future<void> token() async {
+  Future<String?> token() async {
     final user = FirebaseAuth.instance.currentUser;
-    if (user == null) return;
+    if (user == null) return null;
     final token = await user.getIdTokenResult();
-    debug.log(token.toString());
+    return token.token;
   }
 
   @override
@@ -68,6 +68,7 @@ class FirebaseAuthProvider implements AuthProvider {
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
+      await token();
       final user = currentUser;
       if (user != null) {
         return user;

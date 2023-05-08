@@ -15,7 +15,7 @@ class NovelTagsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: tags.length * 3.h + 10.h,
+      height: tags.length * 2.5.h + 8.h,
       width: width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,

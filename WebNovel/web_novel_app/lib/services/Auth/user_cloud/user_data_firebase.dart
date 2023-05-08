@@ -34,7 +34,7 @@ class UserDataFirebase {
     });
   }
 
-  Future<List<UserData>> getUserData({required String userAcountId}) async {
+  Future<List<UserData>> getUserData({required String userAcountId, String? token}) async {
     try {
       
       final usersData = await users
@@ -45,7 +45,7 @@ class UserDataFirebase {
           .get()
           .then(
             (value) =>
-                value.docs.map((doc) => UserData.fromSnapshot(doc)).toList(),
+                value.docs.map((doc) => UserData.fromSnapshot(doc, token!)).toList(),
           );
       return usersData ;
     } catch (e) {

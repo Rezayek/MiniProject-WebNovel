@@ -36,21 +36,45 @@ class NovelModel {
     required this.readers,
     required this.chapters,
   });
-
+  // novel[urlNovel]
   factory NovelModel.fromRequest(Map<String, dynamic> novel) => NovelModel(
-      id: novel[idNovel],
-      url: novel[urlNovel],
+      id: novel[idNovel] ?? "1",
+      url: "",
       name: novel[nameNovel],
-      author: novel[authorNovel],
-      translator: novel[translatorNovel],
-      rating: novel[ratingNovel],
-      state: novel[stateNovel],
-      releaseDate: novel[releaseDateNovel],
+      author: List<String>.from(novel[authorNovel].cast<dynamic>()),
+      translator: List<String>.from(novel[translatorNovel].cast<dynamic>()),
+      rating: novel[ratingNovel].toDouble(),
+      state: novel[stateNovel].toString(),
+      releaseDate: novel[releaseDateNovel].toString(),
       coins: novel[coinsNovel],
       description: novel[descriptionNovel],
-      tags: novel[tagsNovel],
-      currentRank: 1,
-      previousRank: 0,
-      readers: 0,
-      chapters: 50);
+      tags: List<String>.from(novel[tagsNovel].cast<dynamic>()),
+      currentRank: (() {
+        try {
+          return int.parse(novel[currentRankNovel].toString());
+        } catch (e) {
+          return 0;
+        }
+      })(),
+      previousRank: (() {
+        try {
+          return int.parse(novel[previousRankNovel].toString());
+        } catch (e) {
+          return 0;
+        }
+      })(),
+      readers: (() {
+        try {
+          return int.parse(novel[readerNovel].toString());
+        } catch (e) {
+          return 0;
+        }
+      })(),
+      chapters: (() {
+        try {
+          return int.parse(novel[chaptersNovel].toString());
+        } catch (e) {
+          return 0;
+        }
+      })());
 }

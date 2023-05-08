@@ -58,14 +58,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         try {
           await provider.initialize();
           final user = provider.currentUser;
-          //await provider.token();
+          final token = await provider.token();
+          
           if (user == null) {
             emit(const AuthStateLoggedOut(exception: null, isLoading: false));
           } else if (!user.isEmailVerified) {
             emit(const AuthStateNeedsVerification(isLoading: false));
           } else {
             final userData = UserSingleton();
-            final data = await UserDataFirebase().getUserData(userAcountId: user.id);
+            final data = await UserDataFirebase().getUserData(userAcountId: user.id, token: token);
             userData.setUser(data[0]);
             emit(AuthStateLoggedIn(user: user, isLoading: false));
           }
@@ -82,9 +83,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         try {
           emit(const AuthStateLoggedOut(exception: null, isLoading: true));
           final user = await provider.logIn(email: email, password: password);
+          final token = await provider.token();
           final userData = UserSingleton();
-          final data =
-              await UserDataFirebase().getUserData(userAcountId: user.id);
+          final data = await UserDataFirebase().getUserData(userAcountId: user.id, token: token);
           userData.setUser(data[0]);
 
           emit(const AuthStateLoggedOut(exception: null, isLoading: false));

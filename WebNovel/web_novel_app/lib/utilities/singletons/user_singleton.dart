@@ -32,7 +32,7 @@ class UserSingleton {
             coins: currentUser.coins - value as int,
             level: currentUser.level,
             exp: currentUser.exp,
-            imageUrl: currentUser.imageUrl);
+            imageUrl: currentUser.imageUrl, token: '');
         break;
       case MakeModification.gifts:
         // TODO: Handle this case.
@@ -54,6 +54,6 @@ class UserSingleton {
         coins: 0,
         level: 0,
         exp: 0,
-        imageUrl: "");
+        imageUrl: "", token: '');
   }
 }

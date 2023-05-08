@@ -40,25 +40,24 @@ Future<T?> novelDialog<T>({
                   end: Alignment.centerRight)),
           child: Center(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  novel.name,
-                  style: const TextStyle(
-                      color: black, fontSize: 20, fontWeight: FontWeight.w600),
-                  overflow: TextOverflow.ellipsis,
-                ),
                 Padding(
-                  padding: EdgeInsets.only(
-                      left: 15.w),
-                  child: GestureDetector(
-                    onTap: () => Navigator.of(context).pop(),
-                    child: const Icon(
-                      Icons.close,
-                      size: 35,
-                      color: black,
-                    ),
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    novel.name,
+                    style: const TextStyle(
+                        color: black, fontSize: 20, fontWeight: FontWeight.w600),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).pop(),
+                  child: const Icon(
+                    Icons.close,
+                    size: 35,
+                    color: black,
                   ),
                 )
               ],
@@ -67,15 +66,15 @@ Future<T?> novelDialog<T>({
         ),
         contentPadding: const EdgeInsets.only(top: 5),
         content: SizedBox(
-          height: 40.h,
+          height: 45.h,
           width: 85.w,
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: SizedBox(
-              height: 90.h + novel.tags.length * 0.003.w +(novel.description.length * 15.h) * 0.0025.h,
+              height: 70.h + novel.tags.length * 2.5.h + novel.description.length  * 0.9.h,
               width: 85.w,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   NovelStack(

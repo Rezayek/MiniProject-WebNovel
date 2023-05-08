@@ -12,7 +12,7 @@ class NovelDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 10.h + (description.length * 100.h) * 0.0015,
+      height: description.length * 0.7.h ,
       width: width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -21,7 +21,7 @@ class NovelDescription extends StatelessWidget {
           Label(title: "Summary", gradiantColors: [lightBlue.withOpacity(0.5), white.withOpacity(0)] , margin: [1.h, 1.h, 2.w], expanded: 5.w),
           Padding(
             padding: const EdgeInsets.only(left: 5),
-            child: Text(description, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: black),),
+            child: Text(description, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: black)),
           )
         ],
       ),
