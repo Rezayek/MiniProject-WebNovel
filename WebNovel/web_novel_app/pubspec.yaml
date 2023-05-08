@@ -53,6 +53,7 @@ dependencies:
   just_audio: ^0.9.32
   just_audio_background: ^0.0.1-beta.9
   rxdart: ^0.27.7
+  http: ^0.13.6
 
 
 flutter_native_splash:

@@ -49,7 +49,7 @@ class _NewNovelContainerState extends State<NewNovelContainer> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(widget.novel.name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: black),),
+                    Text(widget.novel.name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: black), overflow: TextOverflow.ellipsis),
                     TagsBuilder(tags: widget.novel.tags, width: widget.width, height: widget.height / 6),
                     RatingText(rating: widget.novel.rating, color: black,),
                     Row(

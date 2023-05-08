@@ -66,7 +66,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '680149849612',
     projectId: 'web-novel-app',
     storageBucket: 'web-novel-app.appspot.com',
-    iosClientId: '680149849612-7e6iige8oeedptcu8qv11k105qimh617.apps.googleusercontent.com',
+    iosClientId:
+        '680149849612-7e6iige8oeedptcu8qv11k105qimh617.apps.googleusercontent.com',
     iosBundleId: 'com.example.webNovelApp',
   );
 
@@ -76,7 +77,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '680149849612',
     projectId: 'web-novel-app',
     storageBucket: 'web-novel-app.appspot.com',
-    iosClientId: '680149849612-7pv31lpp9gk17615qnt3ij6105mvpdml.apps.googleusercontent.com',
+    iosClientId:
+        '680149849612-7pv31lpp9gk17615qnt3ij6105mvpdml.apps.googleusercontent.com',
     iosBundleId: 'com.example.webNovelApp.RunnerTests',
   );
 }

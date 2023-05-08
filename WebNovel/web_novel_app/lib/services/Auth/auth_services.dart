@@ -33,5 +33,5 @@ class AuthServices implements AuthProvider {
       provider.sendPasswordReset(toEmail: toEmail);
 
   @override
-  Future<void> token() => provider.token();
+  Future<String?> token() => provider.token();
 }

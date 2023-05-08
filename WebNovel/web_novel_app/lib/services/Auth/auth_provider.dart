@@ -4,7 +4,7 @@ abstract class AuthProvider {
   Future<void> initialize();
 
   AuthUser? get currentUser;
-  Future<void> token();
+  Future<String?> token();
 
   Future<AuthUser> logIn({
     required String email,
