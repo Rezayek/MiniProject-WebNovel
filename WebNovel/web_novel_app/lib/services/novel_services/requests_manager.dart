@@ -228,6 +228,9 @@ class RequestsManager implements NovelProvider {
         novels.add(NovelModel.fromRequest(novelMap));
       }
 
+
+      
+
       // Map<String, dynamic> novel = {
       //   'id': "1",
       //   'url': "",
